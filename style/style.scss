@@ -45,6 +45,7 @@ body {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    padding: 0 1.2rem;
 }
 
 input,
@@ -122,32 +123,59 @@ h6 {
         box-sizing: border-box;
         display: block;
         text-align: center;
-        width: 35rem;
+        max-width: 35rem;
         line-height: 1.5;
         color: var(--grayish-blue-color);
-        @media screen and (max-width: 550px) {
-            width: 32rem;
-                
-        }
+        
         @media screen and (max-width: 376px) {
             width: 100%;
                 
         }
     }
     &__benefits{
-        border: solid;
-        max-width: max-content;
+        max-width: 80rem;
         margin: auto;
         display: grid;
         place-items: center;
-        grid-template-columns: repeat(3, minmax(1fr, 26rem));
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-auto-flow: column;
         gap: 3.5rem;
+        
         &_card{
-            border: solid;
+            position: relative;
+            z-index: 0;
+            border-radius: 5px;
             box-sizing: border-box;
             width: 100%;
+            box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            
+            &:nth-child(1)::before{
+                
+                border-top: 4px solid var(--cyan-color);
+            }
+            &:nth-child(2)::before{
+                
+                border-top: 4px solid var(--red-color);
+            }
+            &:nth-child(3)::before{
+                
+                border-top: 4px solid var(--orange-color);
+            }
+            &:nth-child(4)::before{
+                
+                border-top: 15px solid var(--blue-color);
+            }
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                z-index: -1;
+                left: 0.2rem;
+                right: 0.2rem;
+                border-radius: 100px;
+            }
         }
         &_card:first-child{
             grid-row: 1/3;
@@ -175,6 +203,14 @@ h6 {
         &_image{
             float: right;
             
+        }
+        @media screen and (max-width: 1024px){
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            &_card {
+                min-height: 12rem;
+            }
         }
     }
 }

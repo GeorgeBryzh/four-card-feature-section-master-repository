@@ -42,6 +42,7 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  padding: 0 1.2rem;
 }
 
 input,
@@ -120,14 +121,9 @@ h6 {
   box-sizing: border-box;
   display: block;
   text-align: center;
-  width: 35rem;
+  max-width: 35rem;
   line-height: 1.5;
   color: var(--grayish-blue-color);
-}
-@media screen and (max-width: 550px) {
-  .four-card__general-description {
-    width: 32rem;
-  }
 }
 @media screen and (max-width: 376px) {
   .four-card__general-description {
@@ -135,21 +131,44 @@ h6 {
   }
 }
 .four-card__benefits {
-  border: solid;
-  max-width: -moz-max-content;
-  max-width: max-content;
+  max-width: 80rem;
   margin: auto;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(3, minmax(1fr, 26rem));
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-auto-flow: column;
   gap: 3.5rem;
 }
 .four-card__benefits_card {
-  border: solid;
+  position: relative;
+  z-index: 0;
+  border-radius: 5px;
   box-sizing: border-box;
   width: 100%;
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.four-card__benefits_card:nth-child(1)::before {
+  border-top: 4px solid var(--cyan-color);
+}
+.four-card__benefits_card:nth-child(2)::before {
+  border-top: 4px solid var(--red-color);
+}
+.four-card__benefits_card:nth-child(3)::before {
+  border-top: 4px solid var(--orange-color);
+}
+.four-card__benefits_card:nth-child(4)::before {
+  border-top: 15px solid var(--blue-color);
+}
+.four-card__benefits_card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  left: 0.2rem;
+  right: 0.2rem;
+  border-radius: 100px;
 }
 .four-card__benefits_card:first-child {
   grid-row: 1/3;
@@ -180,4 +199,14 @@ h6 {
 }
 .four-card__benefits_image {
   float: right;
+}
+@media screen and (max-width: 1024px) {
+  .four-card__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .four-card__benefits_card {
+    min-height: 12rem;
+  }
 }/*# sourceMappingURL=style.css.map */
